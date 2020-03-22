@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">volley_ex</string>
     <string name="token">pk.eyJ1IjoibWFyeWFtdnQiLCJhIjoiY2s3eXY4MjJiMDhsbzNocGRxNWVsbTVkNyJ9.GteApMhSR504o_lSSgzIEQ</string>
+    <string name="show_latitude_and_longitude">Show Latitude and Longitude</string>
 </resources>

@@ -12,7 +12,7 @@
         android:id="@+id/getLatAndLng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Latitude and Longitude"
+        android:text="@string/show_latitude_and_longitude"
         app:layout_constraintBottom_toTopOf="@+id/showLatAndLng"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

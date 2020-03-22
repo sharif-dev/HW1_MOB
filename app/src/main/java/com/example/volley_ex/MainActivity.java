@@ -35,66 +35,36 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "Main";
-    private Button btn_getLatAndLng;
     TextView showLatAndLng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn_getLatAndLng = findViewById(R.id.getLatAndLng);
+        Button btn_getLatAndLng = findViewById(R.id.getLatAndLng);
         showLatAndLng =findViewById(R.id.showLatAndLng);
 
-        final LatitudeAndLongitude latitudeAndLongitude = new LatitudeAndLongitude();
+
+        Log.i(TAG, "pid = " + android.os.Process.myPid() + " tid = "+ android.os.Process.myTid() + " id = " + Thread.currentThread().getId());
+
         btn_getLatAndLng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                latitudeAndLongitude.getLatitudeAndLongitude("" , getApplicationContext() , new threadHandler() );
+                new LatitudeAndLongitude("" , getApplicationContext() , new threadHandler() ).start();
 
             }
         });
     }
 
-//    private void sendRequestAndPrintResopnse() {
-//        mRequestQueue = Volley.newRequestQueue(this);
-//        mStringRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                Log.i(TAG, "res = " + response.toString());
-//                try {
-//                    JSONArray jsonArray = response.getJSONArray("features");
-//                    for (int i = 0 ; i < jsonArray.length(); i++){
-//                        JSONObject feature = jsonArray.getJSONObject(i);
-//                        JSONObject geometry =feature.getJSONObject("geometry");
-//                        JSONArray coor = geometry.getJSONArray("coordinates");
-//                        Log.i(TAG, ">>>>>>>>>>>>>>>\n\n\n\n\n      = " + coor.getString(0) + " " +  coor.getString(1));
-//
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.i(TAG ,"er = " +  error.toString());
-//
-//            }
-//        }) ;
-//        mRequestQueue.add(mStringRequest);
-//
-//    }
     private class threadHandler extends Handler {
         @Override
         public void handleMessage(Message message) {
             String LatAndLng;
-            switch (message.what) {
-                case 1:
-                    Bundle bundle = message.getData();
-                    LatAndLng = bundle.getString("result");
-                    break;
-                default:
+            if (message.what == 1)
+//                    Bundle bundle = message.getData();
+                    LatAndLng = message.getData().getString("result");
+            else
                     LatAndLng = null;
-            }
+
             showLatAndLng.setText(LatAndLng);
         }
     }
