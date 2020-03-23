@@ -33,7 +33,7 @@ public class LatitudeAndLongitude extends Thread{
         final String[] latitude = {null};
         final String[] longitude = {null};
         final String[] result = {""};
-        String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/tehran.json?access_token=pk.eyJ1IjoibWFyeWFtdnQiLCJhIjoiY2s3eXY4MjJiMDhsbzNocGRxNWVsbTVkNyJ9.GteApMhSR504o_lSSgzIEQ";
+        String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/"+cityChosenByUser+".json?access_token=pk.eyJ1IjoibWFyeWFtdnQiLCJhIjoiY2s3eXY4MjJiMDhsbzNocGRxNWVsbTVkNyJ9.GteApMhSR504o_lSSgzIEQ";
         RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest mStringRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

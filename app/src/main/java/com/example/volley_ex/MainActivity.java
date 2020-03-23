@@ -10,6 +10,8 @@ import android.os.Message;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -33,6 +35,12 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private  static final String[] COUNTRIES=new String[]{
+            "afghanestan","Albania","Algebra","Andorra","Angola"
+
+    };
+
+
 
     public static final String TAG = "Main";
     TextView showLatAndLng;
@@ -40,8 +48,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("helllloooooooo");
         Button btn_getLatAndLng = findViewById(R.id.getLatAndLng);
         showLatAndLng =findViewById(R.id.showLatAndLng);
+
+        final AutoCompleteTextView editText=findViewById(R.id.actv);
+
+        final String[] input_ = new String[1];
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,COUNTRIES);
+        editText.setAdapter(adapter);
+
+
+
+
+
+        Button choose=(Button) findViewById(R.id.choose);
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                input_[0] =editText.getText().toString();
+                System.out.println("hgfjhghghjgh  "+ input_[0]);
+
+
+            }
+        });
 
 
         Log.i(TAG, "pid = " + android.os.Process.myPid() + " tid = "+ android.os.Process.myTid() + " id = " + Thread.currentThread().getId());
@@ -49,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         btn_getLatAndLng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new LatitudeAndLongitude("" , getApplicationContext() , new threadHandler() ).start();
+                new LatitudeAndLongitude(input_[0] , getApplicationContext() , new threadHandler() ).start();
 
             }
         });
