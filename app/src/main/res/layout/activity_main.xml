@@ -8,27 +8,27 @@
 
 
     <Button
-
         android:id="@+id/getLatAndLng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_latitude_and_longitude"
-        app:layout_constraintBottom_toTopOf="@+id/showLatAndLng"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintVertical_bias="0.314" />
 
     <TextView
         android:id="@+id/showLatAndLng"
         android:layout_width="218dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="344dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468" />
 
     <AutoCompleteTextView
         android:id="@+id/actv"
@@ -39,21 +39,25 @@
         android:hint="select a country"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.163" />
 
-    <Button
-        android:id="@+id/choose"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
-        tools:text="choose" />
+        app:layout_constraintVertical_bias="0.402" /><![CDATA[
+
+
 
     \>
 
+
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>

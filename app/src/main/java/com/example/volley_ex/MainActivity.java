@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("helllloooooooo");
         Button btn_getLatAndLng = findViewById(R.id.getLatAndLng);
         showLatAndLng =findViewById(R.id.showLatAndLng);
 
@@ -60,27 +59,12 @@ public class MainActivity extends AppCompatActivity {
         editText.setAdapter(adapter);
 
 
-
-
-
-        Button choose=(Button) findViewById(R.id.choose);
-        choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                input_[0] =editText.getText().toString();
-                System.out.println("hgfjhghghjgh  "+ input_[0]);
-
-
-            }
-        });
-
-
         Log.i(TAG, "pid = " + android.os.Process.myPid() + " tid = "+ android.os.Process.myTid() + " id = " + Thread.currentThread().getId());
 
         btn_getLatAndLng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                input_[0] =editText.getText().toString();
                 new LatitudeAndLongitude(input_[0] , getApplicationContext() , new threadHandler() ).start();
 
             }
@@ -90,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private class threadHandler extends Handler {
         @Override
         public void handleMessage(Message message) {
+            showLatAndLng.setText("waiting for response");
             String LatAndLng;
             if (message.what == 1)
 //                    Bundle bundle = message.getData();
