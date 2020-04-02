@@ -46,6 +46,7 @@ public class LatitudeAndLongitude extends Thread{
                         JSONArray coordinates = geometry.getJSONArray("coordinates");
                         latitude[0] = coordinates.getString(0);
                         longitude[0] = coordinates.getString(1);
+                        break;
 
 
                     }
