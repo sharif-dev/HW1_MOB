@@ -59,7 +59,7 @@ public class LatitudeAndLongitude extends Thread{
                     if (latitude[0] != null && longitude[0] != null) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result[0] = "Latitude : " + latitude[0] + "\nLongitude : " + longitude[0];
+                        result[0] =latitude[0]+"_"+longitude[0];
                         bundle.putString("result", result[0]);
                         message.setData(bundle);
                     } else {

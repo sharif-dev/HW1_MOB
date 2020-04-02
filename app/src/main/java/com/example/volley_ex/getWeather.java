@@ -21,11 +21,11 @@ public class getWeather {
 
     private static final String TAG = "getWeather";
 
-    public  void getWeatherstatus(final String latitude, final String longitude, final Context context, final Handler handler) {
+    public  void getWeatherstatus(final String longitude, final String latitude, final Context context, final Handler handler) {
         Thread thread = new Thread() {
 
             public void run() {
-                String server_url="https://api.weatherapi.com/v1/forecast.json?q=35.689198,51.388973&key=1dcc0a5f5df54b03863131439200104%20&days=3";
+                String server_url="https://api.weatherapi.com/v1/forecast.json?q="+latitude+","+longitude+"&key=1dcc0a5f5df54b03863131439200104%20&days=3";
                 RequestQueue requestQueue;
                 requestQueue= Volley.newRequestQueue(context);
                 {

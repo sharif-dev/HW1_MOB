@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    getWeather getWeather_=new getWeather();
+    Handler handler= new threadHandler1();
+    String weather_status;
 
 
     public static final String TAG = "Main";
@@ -81,8 +84,31 @@ public class MainActivity extends AppCompatActivity {
                     LatAndLng = message.getData().getString("result");
             else
                     LatAndLng = null;
+            Log.i(TAG, "handleMessage: "+LatAndLng);
 
-            showLatAndLng.setText(LatAndLng);
+           String[] LatAndLng_=LatAndLng.split("_");
+//
+           Log.i(TAG, "handleMessage: "+LatAndLng_[0]+" "+LatAndLng_[1]);
+           getWeather_.getWeatherstatus(LatAndLng_[0],LatAndLng_[1],getApplicationContext(),handler);
+        }
+    }
+
+    private class threadHandler1 extends Handler {
+        private static final String TAG = "threadHandler";
+
+
+        @Override
+        public void handleMessage(Message message) {
+
+
+            Log.d(TAG, "handleMessageid: "+android.os.Process.myTid());
+
+            Log.d(TAG, "handleMessage: ");
+            Bundle bundle = message.getData();
+            weather_status= bundle.getString("result");
+            Log.d(TAG, "handleMessage: "+weather_status);
+
+
         }
     }
 
